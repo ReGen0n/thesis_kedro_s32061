@@ -1,0 +1,9 @@
+validation:
+  min_rows: 20
+
+model:
+  gradient_boosting:
+    n_estimators: 30
+
+evaluation:
+  n_repeats: 2

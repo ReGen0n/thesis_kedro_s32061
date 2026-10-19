@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thesis_kedro_demo"
+readme = "README.md"
+requires-python = ">=3.9"
+dynamic = ["dependencies", "version"]
+
+[project.scripts]
+thesis-kedro-demo = "thesis_kedro_demo.__main__:main"
+
+[project.optional-dependencies]
+dev = ["pytest~=8.0", "kedro-viz>=10.0"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = "requirements.txt" }
+version = { attr = "thesis_kedro_demo.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.kedro]
+package_name = "thesis_kedro_demo"
+project_name = "thesis_kedro_demo"
+kedro_init_version = "1.0.0"
+tools = []
+example_pipeline = "False"
+source_dir = "src"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.kedro_telemetry]
+project_id = "94115e2e580642909a742dcd59d33d55"

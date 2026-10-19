@@ -1,0 +1,4 @@
+kedro>=1.0,<2.0
+kedro-datasets[pandas-csvdataset,pickle-pickledataset,json-jsondataset]>=7.0
+pandas>=2.0
+scikit-learn>=1.3

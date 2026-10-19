@@ -1,0 +1,54 @@
+# Data Catalog: every dataset the pipelines read or write.
+# Paths are relative to the project root; nodes never see them.
+
+# ---------- 01 raw ----------
+patients_raw:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/diabetes_patients.csv
+
+# ---------- 02 intermediate ----------
+patients_validated:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/patients_validated.csv
+
+# ---------- 04 feature ----------
+model_input_table:
+  type: pandas.CSVDataset
+  filepath: data/04_feature/model_input_table.csv
+
+# ---------- 05 model input ----------
+X_train:
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/X_train.csv
+
+X_test:
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/X_test.csv
+
+y_train:
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/y_train.csv
+
+y_test:
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/y_test.csv
+
+# ---------- 06 models ----------
+regressor:
+  type: pickle.PickleDataset
+  filepath: data/06_models/regressor.pickle
+  versioned: true
+
+# ---------- 07 model output ----------
+test_predictions:
+  type: pandas.CSVDataset
+  filepath: data/07_model_output/test_predictions.csv
+
+# ---------- 08 reporting ----------
+metrics:
+  type: json.JSONDataset
+  filepath: data/08_reporting/metrics.json
+
+feature_importance:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/feature_importance.csv

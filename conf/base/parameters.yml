@@ -1,0 +1,47 @@
+# Tunable values. Override from the CLI, e.g.:
+#   kedro run --params "model.type=ridge,split.random_state=7"
+
+validation:
+  id_column: patient_id
+  min_rows: 50
+  required_columns:
+    - patient_id
+    - age
+    - sex
+    - bmi
+    - blood_pressure
+    - ldl
+    - hdl
+    - glucose
+    - progression
+  # plausible physiological ranges; rows outside them make the run fail
+  value_ranges:
+    age: [0, 120]
+    bmi: [10, 70]
+    blood_pressure: [40, 200]
+    glucose: [40, 300]
+
+features:
+  target: progression
+  drop_columns: [patient_id]
+  bmi_bins: [0, 18.5, 25, 30, 100]     # underweight / normal / overweight / obese
+  age_bins: [0, 40, 55, 120]           # young / middle / senior
+
+split:
+  test_size: 0.2
+  random_state: 2026
+
+model:
+  type: ridge                    # ridge | gradient_boosting
+  random_state: 2026
+  gradient_boosting:
+    n_estimators: 300
+    learning_rate: 0.03
+    max_depth: 2
+    subsample: 0.8
+  ridge:
+    alpha: 1.0
+
+evaluation:
+  n_repeats: 10                  # permutation importance repeats
+  random_state: 2026

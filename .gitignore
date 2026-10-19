@@ -1,0 +1,30 @@
+# --- Kedro ---
+# secrets and machine-specific overrides stay local
+conf/local/**
+!conf/local/.gitkeep
+
+# generated data is not committed, only the raw CSVs and folder placeholders
+data/**
+!data/**/
+!data/**/.gitkeep
+!data/01_raw/diabetes_patients.csv
+!data/01_raw/diabetes_sample.csv
+
+# kedro-viz / sessions
+.viz
+info.log
+errors.log
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- IDE / OS ---
+.idea/
+.vscode/
+.DS_Store

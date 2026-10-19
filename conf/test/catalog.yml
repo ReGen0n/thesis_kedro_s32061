@@ -1,0 +1,11 @@
+# `test` environment: run on a tiny sample instead of the full dataset.
+#   kedro run --env=test
+# Only the entries that differ from conf/base are listed here.
+
+patients_raw:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/diabetes_sample.csv
+
+metrics:
+  type: json.JSONDataset
+  filepath: data/08_reporting/metrics_test.json
